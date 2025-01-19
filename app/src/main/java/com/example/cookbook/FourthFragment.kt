@@ -20,14 +20,14 @@ class FourthFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         return inflater.inflate(R.layout.fragment_fourth, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val searchEditText = view.findViewById<EditText>(R.id.et_search)
+        val searchEditText = view.findViewById<EditText>(R.id.et_search_recipe)
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_search_results)
 
         filteredRecipes.addAll(allRecipes)

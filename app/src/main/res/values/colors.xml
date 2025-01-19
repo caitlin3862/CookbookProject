@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="backgroundColor">#F9E0D9</color>
     <color name="buttonColor">#754F5B</color>
+    <color name="recipeTextColor">#4A4A4A</color>
 </resources>
