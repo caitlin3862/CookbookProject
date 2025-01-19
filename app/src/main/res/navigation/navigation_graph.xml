@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/third"
-        android:name="com.example.cookbook.Third"
+        android:name="com.example.cookbook.ThirdFragment"
         android:label="fragment_third"
         tools:layout="@layout/fragment_third" >
         <action
@@ -38,7 +38,7 @@
     </fragment>
     <fragment
         android:id="@+id/fourth"
-        android:name="com.example.cookbook.Fourth"
+        android:name="com.example.cookbook.FourthFragment"
         android:label="fragment_fourth"
         tools:layout="@layout/fragment_fourth" >
         <action
