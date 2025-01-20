@@ -14,6 +14,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfig: AppBarConfiguration
     private lateinit var navController: NavController
+    private var recipesList: MutableList<String> = mutableListOf()
+    private var pageNum: Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,5 +34,21 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val success: Boolean = navController.navigateUp(appBarConfig)
         return success || super.onSupportNavigateUp()
+    }
+
+    fun getPageNum(): Int {
+        return pageNum
+    }
+
+    fun setPageNum(newNum: Int) {
+        pageNum = newNum
+    }
+
+    fun getRecipes(): MutableList<String>{
+        return recipesList
+    }
+
+    fun addRecipe(newRecipe: String){
+        recipesList.add(newRecipe)
     }
 }

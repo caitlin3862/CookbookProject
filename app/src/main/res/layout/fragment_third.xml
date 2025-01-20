@@ -1,89 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="#F9E0D9"
     android:gravity="center"
-    android:padding="16dp"
-    android:background="#FFF5E1">
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add New Recipe"
-        android:textSize="24sp"
-        android:textColor="#FF6F61"
+        android:layout_margin="50dp"
         android:layout_marginBottom="20dp"
-        android:fontFamily="sans-serif-medium"/>
+        android:fontFamily="@font/pixelify_sans_medium"
+        android:text="Add New Recipe"
+        android:textColor="#FF6F61"
+        android:textSize="24sp" />
 
     <EditText
         android:id="@+id/et_recipe_name"
         android:layout_width="match_parent"
         android:layout_height="48dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/rounded_edittext"
+        android:fontFamily="@font/pixelify_sans_medium"
         android:hint="Recipe Name"
         android:inputType="text"
         android:padding="10dp"
-        android:background="@drawable/rounded_edittext"
         android:textColor="#4A4A4A"
-        android:textSize="16sp"
-        android:layout_marginBottom="12dp"
-        android:textColorHint="#FF6F61"/>
+        android:textColorHint="#FF6F61"
+        android:textSize="16sp" />
 
     <EditText
         android:id="@+id/et_recipe_description"
         android:layout_width="match_parent"
         android:layout_height="48dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/rounded_edittext"
+        android:fontFamily="@font/pixelify_sans_medium"
         android:hint="Recipe Description"
         android:inputType="text"
         android:padding="10dp"
-        android:background="@drawable/rounded_edittext"
         android:textColor="#4A4A4A"
-        android:textSize="16sp"
-        android:layout_marginBottom="12dp"
-        android:textColorHint="#FF6F61"/>
+        android:textColorHint="#FF6F61"
+        android:textSize="16sp" />
 
     <EditText
         android:id="@+id/et_recipe_ingredients"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/rounded_edittext"
+        android:fontFamily="@font/pixelify_sans_medium"
         android:hint="Ingredients"
         android:inputType="textMultiLine"
-        android:padding="10dp"
-        android:background="@drawable/rounded_edittext"
-        android:textColor="#4A4A4A"
-        android:textSize="16sp"
-        android:layout_marginBottom="12dp"
-        android:textColorHint="#FF6F61"
         android:lines="4"
-        android:maxLines="6"/>
+        android:maxLines="6"
+        android:padding="10dp"
+        android:textColor="#4A4A4A"
+        android:textColorHint="#FF6F61"
+        android:textSize="16sp" />
 
     <EditText
         android:id="@+id/et_recipe_steps"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/rounded_edittext"
+        android:fontFamily="@font/pixelify_sans_medium"
         android:hint="Steps"
         android:inputType="textMultiLine"
-        android:padding="10dp"
-        android:background="@drawable/rounded_edittext"
-        android:textColor="#4A4A4A"
-        android:textSize="16sp"
-        android:layout_marginBottom="20dp"
-        android:textColorHint="#FF6F61"
         android:lines="4"
-        android:maxLines="6"/>
+        android:maxLines="6"
+        android:padding="10dp"
+        android:textColor="#4A4A4A"
+        android:textColorHint="#FF6F61"
+        android:textSize="16sp" />
 
     <Button
         android:id="@+id/btn_save_recipe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Save Recipe"
-        android:textColor="#FFFFFF"
-        android:background="#B71C1C"
-        android:textSize="18sp"
-        android:padding="14dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        android:gravity="center"/>
+        android:background="#B71C1C"
+        android:backgroundTint="#B71C1C"
+        android:fontFamily="@font/pixelify_sans_medium"
+        android:gravity="center"
+        android:padding="14dp"
+        android:text="Save Recipe"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/pageNum3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/pixelify_sans_medium"
+        android:text="Pg. 1"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </LinearLayout>

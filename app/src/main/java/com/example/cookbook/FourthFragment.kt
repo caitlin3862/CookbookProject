@@ -16,6 +16,7 @@ class FourthFragment : Fragment() {
 
     private val allRecipes = listOf("Pasta", "Pizza", "Salad", "Soup", "Burger", "Sandwich")
     private val filteredRecipes = mutableListOf<String>()
+    private lateinit var pageNumTextView: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,6 +27,13 @@ class FourthFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val activity: MainActivity = context as MainActivity
+        val pageNum: Int = activity.getPageNum()
+        activity.setPageNum(4)
+
+        pageNumTextView = view.findViewById(R.id.pageNum4)
+        pageNumTextView.text = "Pg. " + pageNum
 
         val searchEditText = view.findViewById<EditText>(R.id.et_search_recipe)
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_search_results)

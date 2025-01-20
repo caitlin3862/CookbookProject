@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 
 class ThirdFragment : Fragment() {
 
     private val recipeList = mutableListOf<Recipe>()
+    private lateinit var pageNumTextView: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -21,6 +23,13 @@ class ThirdFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val activity: MainActivity = context as MainActivity
+        val pageNum: Int = activity.getPageNum()
+        activity.setPageNum(3)
+
+        pageNumTextView = view.findViewById(R.id.pageNum3)
+        pageNumTextView.text = "Pg. " + pageNum
 
         val recipeName = view.findViewById<EditText>(R.id.et_recipe_name)
         val recipeDescription = view.findViewById<EditText>(R.id.et_recipe_description)
@@ -36,6 +45,7 @@ class ThirdFragment : Fragment() {
 
             if (name.isNotBlank() && description.isNotBlank() && ingredients.isNotBlank() && steps.isNotBlank()) {
                 val recipe = Recipe(name, description, ingredients, steps)
+                activity.addRecipe(name)
                 recipeList.add(recipe)
 
                 recipeName.text.clear()
