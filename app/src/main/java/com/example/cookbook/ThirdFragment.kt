@@ -1,5 +1,7 @@
 package com.example.cookbook
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +15,7 @@ class ThirdFragment : Fragment() {
 
     private val recipeList = mutableListOf<Recipe>()
     private lateinit var pageNumTextView: TextView
+    private lateinit var recipes: MutableList<String>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,6 +34,7 @@ class ThirdFragment : Fragment() {
         pageNumTextView = view.findViewById(R.id.pageNum3)
         pageNumTextView.text = "Pg. " + pageNum
 
+
         val recipeName = view.findViewById<EditText>(R.id.et_recipe_name)
         val recipeDescription = view.findViewById<EditText>(R.id.et_recipe_description)
         val recipeIngredients = view.findViewById<EditText>(R.id.et_recipe_ingredients)
@@ -46,6 +50,7 @@ class ThirdFragment : Fragment() {
             if (name.isNotBlank() && description.isNotBlank() && ingredients.isNotBlank() && steps.isNotBlank()) {
                 val recipe = Recipe(name, description, ingredients, steps)
                 activity.addRecipe(name)
+                recipes = activity.getRecipes()
                 recipeList.add(recipe)
 
                 recipeName.text.clear()
@@ -54,7 +59,24 @@ class ThirdFragment : Fragment() {
                 recipeSteps.text.clear()
             }
         }
+
+        recipes = activity.getRecipes()
+        val pref: SharedPreferences = activity.getPreferences(Context.MODE_PRIVATE)
+        val savedList = pref.getStringSet("recipesList", recipes.toSet())
+        if (savedList != null) {
+            recipes = savedList.toMutableList()
+        }
     }
+
+    override fun onStop() {
+        super.onStop()
+        val activity: MainActivity = context as MainActivity
+        val prefs: SharedPreferences = activity.getPreferences(Context.MODE_PRIVATE)
+        val prefEditor: SharedPreferences.Editor = prefs.edit()
+        prefEditor.putStringSet("recipesList", recipes.toSet())
+        prefEditor.apply()
+    }
+
 }
 
 data class Recipe(val name: String, val description: String, val ingredients: String, val steps: String)

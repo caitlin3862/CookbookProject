@@ -1,5 +1,7 @@
 package com.example.cookbook
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,6 +18,7 @@ class Second : Fragment() {
     private lateinit var pageNumTextView: TextView
     private lateinit var recipesTextView: TextView
     private lateinit var recipesButton: Button
+    private lateinit var list: MutableList<String>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +39,13 @@ class Second : Fragment() {
         val pageNum: Int = activity.getPageNum()
         activity.setPageNum(2)
 
-        val list: MutableList<String> = activity.getRecipes()
+        list = activity.getRecipes()
+
+        val pref: SharedPreferences = activity.getPreferences(Context.MODE_PRIVATE)
+        val savedList = pref.getStringSet("recipesList", list.toSet())
+        if (savedList != null) {
+            list = savedList.toMutableList()
+        }
 
         if (list.isNotEmpty()) {
             for (recipe in list) {
@@ -56,6 +65,15 @@ class Second : Fragment() {
             navController.navigate(R.id.action_second_to_third2)
         }
 
+    }
+
+    override fun onStop() {
+        super.onStop()
+        val activity: MainActivity = context as MainActivity
+        val prefs: SharedPreferences = activity.getPreferences(Context.MODE_PRIVATE)
+        val prefEditor: SharedPreferences.Editor = prefs.edit()
+        prefEditor.putStringSet("recipesList", list.toSet())
+        prefEditor.apply()
     }
 
 }

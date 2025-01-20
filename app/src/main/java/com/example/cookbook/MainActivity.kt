@@ -1,5 +1,7 @@
 package com.example.cookbook
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -29,12 +31,28 @@ class MainActivity : AppCompatActivity() {
         val navGraph: NavGraph = navController.graph
         appBarConfig = AppBarConfiguration(navGraph)
         setupActionBarWithNavController(navController, appBarConfig)
+
+        val pref: SharedPreferences = getPreferences(Context.MODE_PRIVATE)
+        val savedList = pref.getStringSet("recipesList", recipesList.toSet())
+        if (savedList != null) {
+            recipesList = savedList.toMutableList()
+        }
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
         val success: Boolean = navController.navigateUp(appBarConfig)
         return success || super.onSupportNavigateUp()
     }
+
+    override fun onStop() {
+        super.onStop()
+        val prefs: SharedPreferences = getPreferences(Context.MODE_PRIVATE)
+        val prefEditor: SharedPreferences.Editor = prefs.edit()
+        prefEditor.putStringSet("recipesList", recipesList.toSet())
+        prefEditor.apply()
+    }
+
 
     fun getPageNum(): Int {
         return pageNum

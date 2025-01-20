@@ -1,5 +1,7 @@
 package com.example.cookbook
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -25,6 +27,7 @@ class First : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         val activity: MainActivity = context as MainActivity
         var pageNum: Int = activity.getPageNum()

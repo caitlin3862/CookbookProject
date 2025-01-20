@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/second"
         android:name="com.example.cookbook.Second"
-        android:label="fragment_second"
+        android:label="Cook Book"
         tools:layout="@layout/fragment_second" >
         <action
             android:id="@+id/action_second_to_third2"
@@ -24,7 +24,7 @@
     <fragment
         android:id="@+id/third"
         android:name="com.example.cookbook.ThirdFragment"
-        android:label="fragment_third"
+        android:label="Add Own"
         tools:layout="@layout/fragment_third" >
         <action
             android:id="@+id/action_third_to_fourth2"
@@ -39,7 +39,7 @@
     <fragment
         android:id="@+id/fourth"
         android:name="com.example.cookbook.FourthFragment"
-        android:label="fragment_fourth"
+        android:label="Search"
         tools:layout="@layout/fragment_fourth" >
         <action
             android:id="@+id/action_fourth_to_first2"
@@ -54,7 +54,7 @@
     <fragment
         android:id="@+id/first"
         android:name="com.example.cookbook.First"
-        android:label="fragment_first"
+        android:label="Home"
         tools:layout="@layout/fragment_first" >
         <action
             android:id="@+id/action_first_to_second2"
